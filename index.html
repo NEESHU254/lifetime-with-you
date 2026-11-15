@@ -1,0 +1,718 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Lifetime With You | Subbu ❤️</title>
+
+<style>
+* { box-sizing:border-box; }
+
+:root {
+  --cream:#f7eddf;
+  --paper:#fffaf1;
+  --wine:#783b40;
+  --red:#a33f43;
+  --gold:#b28a55;
+  --ink:#49312d;
+}
+
+body {
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:Georgia,serif;
+  text-align:center;
+  overflow-x:hidden;
+}
+
+button {
+  border:1px solid var(--gold);
+  background:var(--red);
+  color:white;
+  padding:15px 27px;
+  border-radius:30px;
+  font-size:16px;
+  font-family:Georgia,serif;
+  cursor:pointer;
+  transition:transform .25s,background .25s;
+}
+
+button:hover {
+  transform:scale(1.05);
+  background:var(--wine);
+}
+
+.screen {
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  padding:35px 18px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hidden { display:none !important; }
+
+.paper {
+  background:var(--paper);
+  border:1px solid #dfc9a9;
+  border-radius:5px;
+  padding:35px 25px;
+  max-width:680px;
+  width:100%;
+  box-shadow:0 10px 35px #754b3220;
+  position:relative;
+  z-index:2;
+}
+
+.eyebrow {
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:4px;
+  margin-bottom:20px;
+}
+
+h1 {
+  font-size:clamp(37px,8vw,64px);
+  font-weight:normal;
+  color:var(--wine);
+  line-height:1.15;
+  margin:15px 0;
+}
+
+h2 {
+  color:var(--red);
+  font-weight:normal;
+  font-size:29px;
+}
+
+p {
+  line-height:1.9;
+  font-size:17px;
+}
+
+.italic { font-style:italic; }
+
+.divider {
+  color:var(--gold);
+  letter-spacing:10px;
+  margin:22px 0;
+}
+
+.rose {
+  font-size:58px;
+  margin:12px;
+}
+
+.small {
+  font-size:13px;
+  color:#95766c;
+}
+
+.buttons {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin:30px auto 10px;
+  min-height:65px;
+  position:relative;
+}
+
+#noButton {
+  background:#bba69a;
+  border-color:#bba69a;
+  color:#fff;
+  position:relative;
+}
+
+.grace {
+  border:0;
+  background:transparent;
+  color:#92766b;
+  text-decoration:underline;
+  font-size:13px;
+  padding:10px;
+  margin-top:15px;
+}
+
+.grace:hover {
+  background:transparent;
+  transform:none;
+}
+
+.story {
+  color:#674843;
+  font-size:19px;
+  line-height:2;
+  margin:25px 0;
+}
+
+.photo-placeholder {
+  background:#f0e2d3;
+  border:1px dashed #bc987c;
+  padding:25px;
+  margin:15px auto;
+  border-radius:10px;
+  color:#906b5c;
+  font-size:14px;
+}
+
+.photo {
+  max-width:100%;
+  max-height:360px;
+  width:auto;
+  border-radius:8px;
+  border:8px solid white;
+  box-shadow:0 5px 20px #0002;
+  margin:15px auto;
+}
+
+.photo-gallery {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin:20px 0;
+}
+
+.photo-gallery img {
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border:6px solid white;
+  box-shadow:0 4px 12px #0002;
+  border-radius:4px;
+}
+
+.next {
+  margin-top:20px;
+}
+
+#proposalScreen {
+  background:linear-gradient(140deg,#f7eddf,#eed9d1,#f8eddf);
+}
+
+.ring {
+  font-size:100px;
+  animation:ringGlow 2s infinite alternate;
+  display:inline-block;
+}
+
+@keyframes ringGlow {
+  from { transform:scale(1); filter:drop-shadow(0 0 2px #c69b4d); }
+  to { transform:scale(1.12); filter:drop-shadow(0 0 18px #c69b4d); }
+}
+
+#letterScreen {
+  background:#f2e5d5;
+}
+
+.letter {
+  background:#fffaf0;
+  padding:35px 27px;
+  border:1px solid #d9bf9e;
+  box-shadow:0 10px 35px #744b3220;
+  max-width:650px;
+  width:100%;
+  text-align:left;
+  line-height:2;
+  font-size:18px;
+  color:#63443b;
+}
+
+.signature {
+  text-align:right;
+  color:var(--red);
+  font-style:italic;
+  margin-top:30px;
+}
+
+#celebrationScreen {
+  background:linear-gradient(150deg,#f5e4d7,#fff4e7);
+}
+
+#fireworks {
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:10;
+}
+
+footer {
+  font-size:11px;
+  letter-spacing:2px;
+  color:#aa8a79;
+  margin-top:30px;
+}
+
+@media(max-width:480px) {
+  .paper { padding:27px 17px; }
+  .photo-gallery img { height:135px; }
+  .letter { padding:25px 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<!-- SCREEN 1: THE INVITATION -->
+
+<section class="screen" id="welcome">
+
+<div class="paper">
+
+  <div class="eyebrow">A PERSONAL INVITATION</div>
+
+  <div class="rose">🌹</div>
+
+  <p class="small">To my favourite person in the world</p>
+
+  <h1>Dear Subbu...</h1>
+
+  <div class="divider">✧ ❦ ✧</div>
+
+  <h2>Can I ask you something?</h2>
+
+  <p class="italic">
+    I've been wanting to ask you this.<br>
+    And I've prepared something special.
+  </p>
+
+  <p>Will you hear me out? ❤️</p>
+
+  <div class="buttons">
+    <button onclick="startStory()">Of course, my love ❤️</button>
+    <button id="noButton"
+      onpointerenter="runAway()"
+      onclick="runAway()">
+      NO 🙈
+    </button>
+  </div>
+
+  <button class="grace" onclick="sayNo()">
+    I'd rather not. (And that's okay.)
+  </button>
+
+  <p class="small" id="tease">
+    P.S. The little NO button seems nervous.
+  </p>
+
+</div>
+
+<footer>A STORY WRITTEN WITH LOVE</footer>
+</section>
+
+
+<!-- SCREEN 2: THE BEGINNING -->
+
+<section class="screen hidden" id="story1">
+<div class="paper">
+
+  <div class="eyebrow">CHAPTER ONE</div>
+
+  <div class="rose">🌹</div>
+
+  <h1>Somewhere Along the Way...</h1>
+
+  <div class="divider">❦</div>
+
+  <p class="story">
+    Life has a funny way of bringing people together.<br><br>
+
+    Sometimes, without even realising it,
+    someone becomes your favourite notification,
+    your favourite conversation,
+    your favourite person to annoy...<br><br>
+
+    And before you know it, they become home.
+  </p>
+
+  <p class="italic">And for me, that person is you, Subbu.</p>
+
+  <button class="next" onclick="showStory(2)">
+    Turn the page ❤️
+  </button>
+</div>
+</section>
+
+
+<!-- SCREEN 3: MEMORIES -->
+
+<section class="screen hidden" id="story2">
+<div class="paper">
+
+  <div class="eyebrow">CHAPTER TWO</div>
+
+  <h1>Our Little World</h1>
+
+  <div class="rose">📸</div>
+
+  <p class="story">
+    It's not just the big moments I treasure.<br><br>
+
+    It's the silly conversations, the unexpected laughs,
+    the little disagreements, the comfortable silences
+    and all the ordinary days that somehow became special.
+  </p>
+
+  <div class="photo-gallery">
+    <img class="photo" src="photo1.jpg" alt="Our memory">
+    <img class="photo" src="photo2.jpg" alt="Our memory">
+    <img class="photo" src="photo3.jpg" alt="Our memory">
+    <img class="photo" src="photo4.jpg" alt="Our memory">
+  </div>
+
+  <p class="italic">
+    Every photograph holds a little piece of my heart.
+  </p>
+
+  <button class="next" onclick="showStory(3)">
+    There's more I want to say...
+  </button>
+
+</div>
+</section>
+
+
+<!-- SCREEN 4: THE FEELING -->
+
+<section class="screen hidden" id="story3">
+<div class="paper">
+
+  <div class="eyebrow">CHAPTER THREE</div>
+
+  <div class="rose">❤️</div>
+
+  <h1>If I Could Choose...</h1>
+
+  <div class="divider">❦</div>
+
+  <p class="story">
+    I would choose the laughter.<br>
+    I would choose the adventures.<br>
+    I would choose the quiet evenings.<br>
+    I would choose growing together.<br>
+    I would choose the imperfect days too.<br><br>
+
+    Not because every day will be easy,
+    but because some people are worth choosing
+    through every season of life.
+  </p>
+
+  <p class="italic">
+    And I would choose you, again and again.
+  </p>
+
+  <button class="next" onclick="showProposal()">
+    One last question... 💌
+  </button>
+
+</div>
+</section>
+
+
+<!-- SCREEN 5: THE PROPOSAL -->
+
+<section class="screen hidden" id="proposalScreen">
+<div class="paper">
+
+  <div class="eyebrow">THE MOST IMPORTANT QUESTION</div>
+
+  <div class="ring">💍</div>
+
+  <div class="rose">🌹</div>
+
+  <h1>Subbu...</h1>
+
+  <h2>Will you choose me in every lifetime?</h2>
+
+  <div class="divider">❦ ✧ ❦</div>
+
+  <p class="story">
+    In this life, in another life,<br>
+    in every version of forever...<br><br>
+
+    Will we keep finding our way back to each other?
+  </p>
+
+  <button onclick="sayYes()">
+    YES, IN EVERY LIFETIME! ❤️
+  </button>
+
+  <br>
+
+  <button class="grace" onclick="sayNo()">
+    I need time to think.
+  </button>
+
+</div>
+</section>
+
+
+<!-- SCREEN 6: THE LOVE LETTER -->
+
+<section class="screen hidden" id="letterScreen">
+<div class="letter">
+
+  <div class="eyebrow">A LETTER FROM MY HEART</div>
+
+  <h2>My Dearest Subbu,</h2>
+
+  <p>
+    If I could give you one thing in life,
+    it would be the ability to see yourself
+    through my eyes.
+  </p>
+
+  <p>
+    Then you would understand how special you are,
+    how much happiness you bring into my life,
+    and why I feel so lucky to share this journey with you.
+  </p>
+
+  <p>
+    I don't promise that every day will be perfect.
+    But I hope we keep laughing, learning,
+    supporting each other and making memories
+    even on the most ordinary days.
+  </p>
+
+  <p>
+    Thank you for being part of my story.
+    I hope we get to write many, many more chapters together.
+  </p>
+
+  <p class="signature">
+    With all my love,<br>
+    Your favourite person ❤️
+  </p>
+
+  <div style="text-align:center">
+    <div class="rose">🌹</div>
+    <button onclick="showCelebration()">
+      Open our forever surprise ✨
+    </button>
+  </div>
+
+</div>
+</section>
+
+
+<!-- SCREEN 7: THE CELEBRATION -->
+
+<section class="screen hidden" id="celebrationScreen">
+<div class="paper">
+
+  <div class="eyebrow">AND SO, OUR STORY CONTINUES...</div>
+
+  <div class="ring">💍</div>
+
+  <h1>A Lifetime With You</h1>
+
+  <div class="divider">❦ ✧ ❦</div>
+
+  <h2>One love. A thousand memories. Endless tomorrows.</h2>
+
+  <p class="story">
+    Here's to every sunrise we'll witness,
+    every adventure we'll take,
+    every challenge we'll overcome,
+    and every little moment we'll call ours.
+  </p>
+
+  <div class="rose">🌹🌹🌹</div>
+
+  <h2>In every lifetime, Subbu.</h2>
+
+  <p class="italic">Always and forever. ❤️</p>
+
+  <button onclick="celebrate()">
+    One more shower of love! 🎉
+  </button>
+
+</div>
+</section>
+
+
+<script>
+
+// THE MOVING NO BUTTON
+
+let escapeCount = 0;
+
+function runAway() {
+
+  const button = document.getElementById("noButton");
+
+  escapeCount++;
+
+  const x = (Math.random() * 240) - 120;
+  const y = (Math.random() * 120) - 60;
+
+  button.style.transform =
+    "translate(" + x + "px," + y + "px)";
+
+  const messages = [
+    "Are you sure? 🥺",
+    "Wait! Hear me out! ❤️",
+    "The button is getting shy! 😂",
+    "Just one little question...",
+    "Okay, I think you should read my letter. 💌"
+  ];
+
+  document.getElementById("tease").textContent =
+    messages[Math.min(escapeCount-1, messages.length-1)];
+}
+
+
+// SCREEN NAVIGATION
+
+function hideAll() {
+
+  document.querySelectorAll(".screen").forEach(s => {
+    s.classList.add("hidden");
+  });
+
+}
+
+function showScreen(id) {
+
+  hideAll();
+
+  document.getElementById(id).classList.remove("hidden");
+
+  window.scrollTo(0,0);
+}
+
+function startStory() {
+  showScreen("story1");
+}
+
+function showStory(number) {
+  showScreen("story" + number);
+}
+
+function showProposal() {
+  showScreen("proposalScreen");
+}
+
+function sayYes() {
+  showScreen("letterScreen");
+  celebrate();
+}
+
+function showCelebration() {
+  showScreen("celebrationScreen");
+  celebrate();
+}
+
+
+// RESPECTFUL RESPONSE
+
+function sayNo() {
+
+  showScreen("welcome");
+
+  document.querySelector("#welcome .paper").innerHTML = `
+    <div class="eyebrow">A LITTLE NOTE</div>
+    <div class="rose">🌷</div>
+    <h1>That's okay, Subbu.</h1>
+    <div class="divider">❦</div>
+    <p class="story">
+      A question this important deserves an honest answer.<br><br>
+      Take all the time you need.
+      No pressure, no expectations.
+      You matter more than any answer. ❤️
+    </p>
+    <p class="italic">With love, always.</p>
+    <button onclick="location.reload()">Read our story again</button>
+  `;
+
+}
+
+
+// FIREWORKS AND HEARTS
+
+function celebrate() {
+
+  const canvas = document.getElementById("fireworks");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const colours = [
+    "#a33f43","#d8aa77","#e6c58d",
+    "#f3a8a8","#ffffff","#b28a55"
+  ];
+
+  const particles = [];
+
+  for(let i=0;i<200;i++) {
+
+    particles.push({
+      x:Math.random()*canvas.width,
+      y:Math.random()*canvas.height,
+      vx:(Math.random()-.5)*8,
+      vy:(Math.random()-.5)*8,
+      life:Math.random()*90+30,
+      colour:colours[Math.floor(Math.random()*colours.length)],
+      size:Math.random()*4+2
+    });
+
+  }
+
+  function draw() {
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    particles.forEach(p=>{
+
+      ctx.globalAlpha=Math.max(0,p.life/120);
+
+      ctx.fillStyle=p.colour;
+
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+      ctx.fill();
+
+      p.x+=p.vx;
+      p.y+=p.vy;
+      p.vy+=0.025;
+      p.life--;
+
+    });
+
+    ctx.globalAlpha=1;
+
+    if(particles.some(p=>p.life>0)) {
+      requestAnimationFrame(draw);
+    } else {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+    }
+
+  }
+
+  draw();
+
+}
+
+window.addEventListener("resize",()=>{
+  const canvas=document.getElementById("fireworks");
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+});
+
+</script>
+
+</body>
+</html>
